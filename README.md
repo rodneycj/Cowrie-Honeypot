@@ -1,2 +1,2 @@
 # Cowrie-Honeypot
-Flatiron School lab on understanding TTP's
+School lab on understanding TTP's
