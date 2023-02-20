@@ -9,11 +9,11 @@ Procedure – Detailed Lab Steps
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 CONFIGURING SECURE SHELL (SSH) 
 
-Create a new Ubuntu Server VM with 4GB of ram
+Create a new Ubuntu Server VM with 4GB of ram. Install Secure Shell
 
      $ yes | sudo apt-get install openssh-server net-tools
      
-Modify the listening port of SSH from  22 to 22222
+Modify and save the listening port of SSH from  22 to 22222
 
      $ sudo vi /etc/ssh/sshd_config
      
@@ -22,3 +22,12 @@ Next, run the following commands to restart SSH with the new settings and check 
      $ sudo systemctl restart sshd
      
      $ sudo systemctl status sshd
+     
+If the “systemctl status sshd” command comes back saying that sshd is active you have successfully updated your sshd port to 22222. Double-check with the netstat command. 
+
+     $ sudo netstat -plunt | grep 22222
+     
+This command should show that sshd is listening on port 22222. That is five 2’s. If it does not then something in configuring the ssh port has gone wrong, review the "sshd_config" file and verify that you have saved the correct port for ssh.
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
