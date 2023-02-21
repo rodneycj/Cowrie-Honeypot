@@ -47,25 +47,25 @@ Add a user named "cowrie", disable the password. When running the, make sure to 
 
      $ sudo adduser --disabled-password cowrie
      
-     Log into the new cowrie account using “su -.”
+Log into the new cowrie account using “su -.”
      
-     As the cowrie user, use git to download the cowrie honeypot package
+As the cowrie user, use git to download the cowrie honeypot package
      
-          $ git clone http://github.com/cowrie/cowrie.git
+     $ git clone http://github.com/cowrie/cowrie.git
           
-     Next, create the virtual sandbox environment for Python and Cowrie to run from
+Next, create the virtual sandbox environment for Python and Cowrie to run from
      
-          $ cd cowrie; virtualenv cowrie-env
+     $ cd cowrie; virtualenv cowrie-env
           
-     Next, activate the Python virtual environment and install the python packages
+Next, activate the Python virtual environment and install the python packages
      
-          $ source cowrie-env/bin/activate
+     $ source cowrie-env/bin/activate
           
-          $ python=python3 
+     $ python=python3 
           
-          (cowrie-env)$ pip install --upgrade pip
+     (cowrie-env)$ pip install --upgrade pip
           
-          (cowrie-env)$ pip install --upgrade -r requirements.txt
+     (cowrie-env)$ pip install --upgrade -r requirements.txt
           
           
      
