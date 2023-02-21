@@ -31,3 +31,43 @@ This command should show that sshd is listening on port 22222. That is five 2’
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+INSTALLING COWRIE HONEYPOT
+
+First, update the software packages
+
+     $ sudo apt-get update
+     
+     $ sudo apt-get upgrade
+     
+Install the packages as dependencies for creating our cowrie honeypot.
+
+     $ yes | sudo apt-get install git python3-virtualenv libssl-dev libffi-dev build-essential libpython3-dev python3-minimal authbind virtualenv vim
+     
+Add a user named "cowrie", disable the password. When running the, make sure to keep all values their default option and type ‘Y’ when asked to accept the information as being correct.
+
+     $ sudo adduser --disabled-password cowrie
+     
+     Log into the new cowrie account using “su -.”
+     
+     As the cowrie user, use git to download the cowrie honeypot package
+     
+          $ git clone http://github.com/cowrie/cowrie.git
+          
+     Next, create the virtual sandbox environment for Python and Cowrie to run from
+     
+          $ cd cowrie; virtualenv cowrie-env
+          
+     Next, activate the Python virtual environment and install the python packages
+     
+          $ source cowrie-env/bin/activate
+          
+          $ python=python3 
+          
+          (cowrie-env)$ pip install --upgrade pip
+          
+          (cowrie-env)$ pip install --upgrade -r requirements.txt
+          
+          
+     
+     
+     
