@@ -83,4 +83,40 @@ Ensure that it is running by using the "netstat" command
 
      (cowrie-env)$ netstat -plunt | grep 222
 
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+POST REDIRECTION CONFIGURATION
+
+The last step is to redirect Port 22 and 23 to Ports 2222 and 2223. This may need to be done as superuser, so first exit your session as the cowrie user
+
+     (cowrie-env)$ exit
      
+Now, run the "redirect" commands. Each new command starts with the ‘$’ symbol
+
+     $ sudo iptables -t nat -A PREROUTING -p tcp --dport 22 -j REDIRECT --to-port 2222
+     
+     $ sudo iptables -t nat -A PREROUTING -p tcp --dport 23 -j REDIRECT --to-port 2223
+     
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+COWRIE FINAL TESTING
+
+Now, deploy the Cowrie environment for testing. Log back into the cowrie user account to start this process
+
+     $ sudo su – cowrie
+     
+     $ cd cowrie
+     
+     $ source cowrie-env/bin/activate
+     
+Print the cowrie log file, and do NOT close the terminal
+
+     (cowrie-env)$ tail -f var/log/cowrie/cowrie.log
+     
+On your second VM try connecting to your cowrie VM with ssh or telnet. While doing this make sure you keep the Cowrie VM up so you can see the login attempt coming in 
+
+![090722_HUN200-3](https://user-images.githubusercontent.com/123989567/220241043-8f684182-a7ea-43b6-96b0-e8971f9556ca.jpg)
+
+These logs from the cowrie machine can be opened even if you are not inside the virtual environment. Open the cowrie log file
+
+     $ tail /home/cowrie/cowrie/var/log/cowrie/cowrie.log
