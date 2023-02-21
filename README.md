@@ -57,7 +57,7 @@ Next, create the virtual sandbox environment for Python and Cowrie to run from
      
      $ cd cowrie; virtualenv cowrie-env
           
-Next, activate the Python virtual environment and install the python packages
+Next, activate the Python virtual environment and install the Python packages
      
      $ source cowrie-env/bin/activate
           
@@ -67,7 +67,20 @@ Next, activate the Python virtual environment and install the python packages
           
      (cowrie-env)$ pip install --upgrade -r requirements.txt
           
-          
+After the above configuration is complete, the next step is to configure the Cowrie daemon (the process that runs in the background)
      
+     (cowrie-env)$ cp etc/cowrie.cfg.dist cowrie.cfg
      
+Next, edit the etc/cowrie.cfg configuration file to enable telnet. Change "enabled = false" to "enabled = true". Save and exit the file
+
+     $ nano cowrie.cfg
+     
+Finally, It’s time to start the cowrie daemon
+
+     (cowrie-env)$ bin/cowrie start
+     
+Ensure that it is running by using the "netstat" command
+
+     (cowrie-env)$ netstat -plunt | grep 222
+
      
